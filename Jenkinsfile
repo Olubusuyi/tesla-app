@@ -21,6 +21,7 @@ node{ def MavenHome = tool name: 'Maven3.8.6'
         input message: 'Application ready for deployment,please review and approve'}
     }
     stage('deploy'){
+        sh "spleep 50"
         deploy adapters: [tomcat9(credentialsId: 'tomcatcredaABC', path: '', url: 'http://54.177.121.14:8080/')], contextPath: null, war: 'target/*war'
     }
     stage('emailnotification'){
